@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %} Select Book Page {% endblock %}
+{% block content %}
+<div class="card text-bg-dark mb-3" style="height: 100vh;">
+    <br>
+    <h2 style="text-align: center">Select Book to Issue</h2>
+    <br>
+    <form method="post" action="{% url 'issue_book' %}">
+        {% csrf_token %}
+        <input type="hidden" name="student_firstname" value="{{ student_firstname }}">
+        <input type="hidden" name="student_lastname" value="{{ student_lastname }}">
+        <div class="mb-3">
+            <label for="book_id" class="form-label">Select Book</label>
+            <select class="form-select" name="book_id" id="book_id">
+                {% for key, book in books.items %}
+                {% if book.quantity > 0 %}
+                <option value="{{ key }}">{{ book.title }} ({{ book.quantity }} available)</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="expiry_date" class="form-label">Expiry Date</label>
+            <input type="date" class="form-control" name="expiry_date" id="expiry_date" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Issue Book</button>
+    </form>
+</div>
+{% endblock content %}

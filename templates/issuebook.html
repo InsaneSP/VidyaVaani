@@ -1,0 +1,69 @@
+{% extends 'admindashboard.html' %}
+{% load static %}
+
+{% block navitem1 %}
+<a class="nav-link active" aria-current="page" href="{% url 'availablebooks' %}">Available Books</a>
+{% endblock navitem1 %}
+
+{% block navitem2 %}
+<a class="nav-link active" aria-current="page" href="{% url 'addbook' %}">Add Book</a>
+{% endblock navitem2 %}
+
+{% block navitem3 %}
+<a class="nav-link active" aria-current="page" href="{% url 'issuebook' %}">Issue Book</a>
+{% endblock navitem3 %}
+
+{% block navitem4 %}
+<a class="nav-link active" aria-current="page" href="{% url 'issuedbooks' %}">Issued Books</a>
+{% endblock navitem4 %}
+
+{% block navitem5 %}
+<a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+{% endblock navitem5 %}
+
+{% block title %} Issue Book Page {% endblock %}
+{% block content %}
+<div class="card text-bg-dark mb-3" style="height: 100vh;">
+    <br>
+    <h2 style="text-align: center">All Students</h2>
+    <br>
+    <table class="table">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Branch</th>
+                <th scope="col">Course</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if students %}
+            {% for key, student in students.items %}
+            <tr>
+                <th>{{ student.firstname }}</th>
+                <td>{{ student.lastname }}</td>
+                <td>{{ student.username }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.branch }}</td>
+                <td>{{ student.course }}</td>
+                <td>
+                    <form method="GET" action="{% url 'selectbook' %}">
+                        <input type="hidden" name="student_firstname" value="{{ student.firstname }}">
+                        <input type="hidden" name="student_lastname" value="{{ student.lastname }}">
+                        <button type="submit" class="btn btn-outline-dark">Issue</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="7" style="text-align: center;">No students available</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

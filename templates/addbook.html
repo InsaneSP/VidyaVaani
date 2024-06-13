@@ -1,0 +1,54 @@
+{% extends 'admindashboard.html' %}
+{% load static %}
+
+{% block title %} Add Book Page {% endblock %}
+{% block content %}
+<div class="card text-bg-dark mb-3" style="height: 100vh;">
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 text-center" style="margin: 0 auto;">
+                    <h1 style="margin-top: 5%;">Add Book</h1>
+                    <br>
+                    <div class="card text-bg-light mb-3">
+                        <div class="card-body">
+                            <form method="POST" action="{% url 'addbook' %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Image</label>
+                                    <input type="file" class="form-control" id="image" name="image">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" class="form-control" id="title" name="title">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="author" class="form-label">Author</label>
+                                    <input type="text" class="form-control" id="author" name="author">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="isbn" class="form-label">ISBN</label>
+                                    <input type="isbn" class="form-control" id="isbn" name="isbn">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="genre" class="form-label">Genre</label>
+                                    <input type="text" class="form-control" id="genre" name="genre">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="price" class="form-label">Price</label>
+                                    <input type="price" class="form-control" id="price" name="price">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="quantity" class="form-label">Quantity</label>
+                                    <input type="quantity" class="form-control" id="price" name="quantity">
+                                </div>
+                                <button type="submit" class="btn btn-outline-dark">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

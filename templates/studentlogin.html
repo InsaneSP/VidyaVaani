@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %} Student Login {% endblock %}
+{% block content %}
+<div class="card text-bg-dark mb-3" style="height: 100vh;">
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 text-center" style="margin: 0 auto;">
+                    <h1 style="margin-top: 5%;">Hello, Student</h1>
+                    <i>Welcome to VidyaVaani</i>
+                    <hr>
+                    <i>You have limited access to various features using Student Account</i>
+                    <hr>
+                    <div class="card text-bg-light mb-3">
+                        <div class="card-body">
+                            <form method="POST" action="{% url 'studentlogin' %}">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                                </div>
+                                <button type="submit" class="btn btn-outline-dark">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

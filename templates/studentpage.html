@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %} Student Page {% endblock %}
+{% block content %}
+<div class="card text-bg-dark mb-3" style="height: 100vh;">
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 text-center" style="margin: 0 auto;">
+                    <h1 style="margin-top: 5%;">Hello, Student</h1>
+                    <i>Welcome to VidyaVaani</i>
+                    <hr>
+                    <i>You have limited access to various features using Student Account</i>
+                    <hr>
+                    <div class="card text-bg-light mb-3" style="width: 18rem; margin: 0 auto;">
+                        <div class="card-body">
+                            <form method="POST" action="{% url 'studentpage' %}">
+                                <div class="mb-6">
+                                    <a href="{% url 'studentsignup' %}" class="btn btn-outline-dark">SignUp</a>
+                                    <a href="{% url 'studentlogin' %}" class="btn btn-outline-dark">Login</a>
+                                </div>
+                                <form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

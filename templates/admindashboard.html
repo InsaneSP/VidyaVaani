@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Admin Dashboard Page {% endblock %}
+
+{% block navitem1 %}
+<a class="nav-link active" aria-current="page" href="{% url 'availablebooks' %}">Available Books</a>
+{% endblock navitem1 %}
+
+{% block navitem2 %}
+<a class="nav-link active" aria-current="page" href="{% url 'addbook' %}">Add Book</a>
+{% endblock navitem2 %}
+
+{% block navitem3 %}
+<a class="nav-link active" aria-current="page" href="{% url 'issuebook' %}">Issue Book</a>
+{% endblock navitem3 %}
+
+{% block navitem4 %}
+<a class="nav-link active" aria-current="page" href="{% url 'issuedbooks' %}">Issued Books</a>
+{% endblock navitem4 %}
+
+{% block navitem5 %}
+<a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+{% endblock navitem5 %}
+
+{% block content %}
+<div class="card text-bg-dark mb-3" style="height: 100vh;">
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 text-center" style="margin: 0 auto;">
+                    <h1 style="margin-top: 5%;">Hello, Admin</h1>
+                    <i>Welcome to VidyaVaani</i>
+                    <hr>
+                    <i>Following are the various features you can access using Admin Account</i>
+                    <hr>
+                    <br>
+                    <div class="card text-bg-light mb-3 text" style="width: 18rem; margin: 0 auto;">
+                        <div class="card-body">
+                            <form method="POST" action="{% url 'adminlogin' %}">
+                                {% csrf_token %}
+                                <div class="mb-6">
+                                    <a href="{% url 'availablebooks' %}" class="btn btn-outline-dark">View Available Books</a>
+                                </div>
+                                <br>
+                                <div class="mb-6">
+                                    <a href="{% url 'addbook' %}" class="btn btn-outline-dark">Add Book</a>
+                                </div>
+                                <br>
+                                <div class="mb-6">
+                                    <a href="{% url 'issuebook' %}" class="btn btn-outline-dark">Issue Book</a>
+                                </div>
+                                <br>
+                                <div class="mb-6">
+                                    <a href="{% url 'issuedbooks' %}" class="btn btn-outline-dark">View Issued Books</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

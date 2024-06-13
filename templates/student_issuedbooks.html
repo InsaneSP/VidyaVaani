@@ -1,0 +1,41 @@
+{% extends 'studentdashboard.html' %}
+{% load static %}
+
+{% block navitem3 %}
+<a class="nav-link active" aria-current="page" href="{% url 'studentdashboard' %}">Explore</a>
+{% endblock navitem3 %}
+
+{% block title %}Student Issued Books {% endblock %}
+{% block content %}
+<div class="card text-bg-dark mb-3" style="height: 100vh;">
+    <br>
+    <h2 style="text-align: center">Issued Books</h2>
+    <br>
+    <table class="table">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">Book Title</th>
+                <th scope="col">Issue Date</th>
+                <th scope="col">Expiry Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if issued_books %}
+                {% for issued_book in issued_books %}
+                    {% if issued_book.student_firstname == student_firstname %}
+                    <tr>
+                        <td>{{ issued_book.book_title }}</td>
+                        <td>{{ issued_book.issue_date }}</td>
+                        <td>{{ issued_book.expiry_date }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="4" style="text-align: center;">No issued books available</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

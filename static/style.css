@@ -1,0 +1,16 @@
+.main-images {
+    height: calc(100vh - 200px);
+    object-fit: cover;
+}
+.secondary-images {
+    height: calc(100vh / 4);
+    object-fit: cover;
+}
+@media (max-width: 768px) {
+    .main-images {
+        height: 50vh;
+    }
+    .secondary-images {
+        height: 25vh;
+    }
+}

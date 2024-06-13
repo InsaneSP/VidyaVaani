@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% block title %} Student Dashboard Page {% endblock %}
+
+{% block navitem4 %}
+<a class="nav-link active" aria-current="page" href="{% url 'student_issuedbooks' %}">Issued Books</a>
+{% endblock navitem4 %}
+
+{% block navitem5 %}
+<a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+{% endblock navitem5 %}
+
+{% block content %}
+<div class="card text-bg-dark mb-3">
+    <div class="card-body text-center">
+        <div class="container-fluid">
+            <div class="row">
+                {% if books %}
+                {% for key, book in books.items %}
+                <div class="col">
+                    <div class="card text-bg-light" style="width: 20rem;">
+                        <img src="{{ book.imageurl }}" class="card-img-top" alt="Book Cover" style="height: 250px; overflow: hidden;">
+                        <div class="card-body" style="overflow: hidden;">
+                            <h5 class="card-title">{{ book.title }}</h5>
+                            <p class="card-text" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">-- {{ book.author }}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Genre: {{ book.genre }}</li>
+                            <li class="list-group-item">ISBN: {{ book.isbn }}</li>
+                            <li class="list-group-item">Price: &#x20B9 {{ book.price }}</li>
+                        </ul>
+                        <div class="card-body">
+                            <form action="{% url 'borrow_book' %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="book_id" value="{{ key }}">
+                                <button type="submit" class="btn btn-outline-dark">Borrow</button>
+                            </form>
+                            <!-- <a href="#" class="btn btn-outline-dark">Buy</a> -->
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p>No books available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

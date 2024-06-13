@@ -1,0 +1,78 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} About Page {% endblock %}
+
+{% block content %}
+<div class="card text-bg-dark mb-3" style="height: 100vh;">
+    <div class="card-body">
+        <h1 class="text-center">About VidyaVaani Library Management System</h1>
+        <p class="text-center">
+            Welcome to VidyaVaani, an efficient and user-friendly library management system designed to streamline the
+            process of managing and accessing a library's resources. This system is crafted to meet the needs of
+            librarians, students, and other library users by providing a comprehensive solution for cataloging,
+            borrowing, and tracking books and other materials.
+        </p>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Features</h3>
+                <ul>
+                    <li>Catalog Management: Easily add, update, and delete books from the library's catalog.</li>
+                    <li>User Management: Administer user accounts, including librarians and students.</li>
+                    <li>Borrowing and Returning: Efficiently manage the process of borrowing and returning books.</li>
+                    <li>Search Functionality: Allow users to search for books by title, author, genre, or ISBN.</li>
+                    <li>Notifications: Notify users of due dates, overdue books, and reserved book availability.</li>
+                    <li>Reporting: Generate reports on book inventory, borrowing trends, and user activity.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Technology Stack</h3>
+                <ul>
+                    <li><strong>Backend:</strong> Django (Python)</li>
+                    <li><strong>Frontend:</strong> HTML, CSS, JavaScript, Bootstrap</li>
+                    <li><strong>Database:</strong> Firebase</li>
+                    <li><strong>Authentication:</strong> Firebase for user authentication</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Getting Started</h3>
+                <p>
+                    To start using the VidyaVaani Library Management System, follow these simple steps:
+                </p>
+                <ol>
+                    <li><strong>Admin Login:</strong> Log in as an admin to configure the system settings and manage
+                        users.</li>
+                    <li><strong>Add Books:</strong> Populate the library catalog by adding books and other materials.
+                    </li>
+                    <li><strong>Manage Users:</strong> Create accounts for librarians and students to grant them
+                        appropriate access.</li>
+                    <li><strong>Borrow/Return:</strong> Use the system to borrow and return books, ensuring accurate
+                        tracking of materials.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Contact Us</h3>
+                <p>
+                    For any questions, feedback, or support, please reach out to our team:
+                </p>
+                <ul>
+                    <li><strong>Email:</strong> support@vidyavaani.com</li>
+                    <li><strong>Phone:</strong> +91 8928437719</li>
+                    <li><strong>Address:</strong> Maharashtra</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

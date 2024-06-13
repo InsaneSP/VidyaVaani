@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %} Student Sign Page {% endblock %}
+{% block content %}
+<div class="card text-bg-dark mb-3" style="height: 100vh;">
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 text-center" style="margin: 0 auto;">
+                    <h1 style="margin-top: 5%;">Hello, Student</h1>
+                    <i>Welcome to VidyaVaani</i>
+                    <hr>
+                    <i>You have limited access to various features using Student Account</i>
+                    <hr>
+                    <div class="card text-bg-light mb-3">
+                        <div class="card-body">
+                            <form method="POST" action="{% url 'studentsignup' %}">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="firstnameInput" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstnameInput" name="firstname">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="lastnameInput" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastnameInput" name="lastname">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="usernameInput" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="usernameInput" name="username">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" name="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1"
+                                        name="password">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="branchInput" class="form-label">Branch</label>
+                                    <input type="text" class="form-control" id="branchInput" name="branch">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="courseInput" class="form-label">Course</label>
+                                    <input type="text" class="form-control" id="courseInput" name="course">
+                                </div>
+                                <button type="submit" class="btn btn-outline-dark">Sign Up</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

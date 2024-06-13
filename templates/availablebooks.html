@@ -1,0 +1,41 @@
+{% extends 'admindashboard.html' %}
+{% load static %}
+
+{% block title %} Available Books Page {% endblock %}
+{% block content %}
+<div class="card text-bg-dark mb-3" style="height: 100vh;">
+    <br>
+    <h2 style="text-align: center">All Books</h2>
+    <br>
+    <table class="table">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">Book</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if books %}
+            {% for key, book in books.items %}
+            <tr>
+                <th><img src="{{ book.imageurl }}" class="card-img-top" alt="Book Cover" style="height: 150px; width: 125px; overflow: hidden;"></th>
+                <th scope="row">{{ book.title }}</th>
+                <td>{{ book.author }}</td>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.genre }}</td>
+                <td>&#x20B9 {{ book.price }}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="5" style="text-align: center;">No books available</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
